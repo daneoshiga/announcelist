@@ -46,4 +46,5 @@ class AnnounceList(object):
         pass
 
 if __name__ == "__main__":
-    print AnnounceList.test()
+    AnnounceList().enable_http_debug()
+    print AnnounceList().test().text
