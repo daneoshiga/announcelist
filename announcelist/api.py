@@ -21,12 +21,10 @@ def test():
     params = {
         'key': '6SHU5P2HLDAYECUM',
         'cmd': 'user-list_users_no_pw',
-        'unique_id': '4082432',
-        'format': 'python'
+        'format': 'json'
     }
 
-    # return requests.get(BASE_URL, params=params, verify=False)
-    return requests.get('https://api.dreamhost.com/?key=6SHU5P2HLDAYECUM&cmd=user-list_users_no_pw&unique_id=914082432&format=python')
+    return requests.get(BASE_URL, params=params, verify=False)
 
 
 if __name__ == "__main__":
