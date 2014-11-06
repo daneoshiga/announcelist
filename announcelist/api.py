@@ -5,16 +5,18 @@ ssl.PROTOCOL_SSLv23 = ssl.PROTOCOL_TLSv1
 import requests
 import logging
 import httplib
-httplib.HTTPConnection.debuglevel = 1
-
-logging.basicConfig()
-logging.getLogger().setLevel(logging.DEBUG)
-
-requests_log = logging.getLogger("requests.packages.urllib3")
-requests_log.setLevel(logging.DEBUG)
-requests_log.propagate = True
 
 BASE_URL = 'https://api.dreamhost.com/'
+
+
+def enable_http_debug():
+    httplib.HTTPConnection.debuglevel = 1
+    logging.basicConfig()
+    logging.getLogger().setLevel(logging.DEBUG)
+
+    requests_log = logging.getLogger("requests.packages.urllib3")
+    requests_log.setLevel(logging.DEBUG)
+    requests_log.propagate = True
 
 
 def test():
