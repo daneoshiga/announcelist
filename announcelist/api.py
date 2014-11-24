@@ -21,6 +21,10 @@ class AnnounceList(object):
         requests_log.propagate = True
 
     def send_request(self, params):
+        params.update({
+            'key': '6SHU5P2HLDAYECUM',
+            'format': 'json'
+        })
         return requests.get(BASE_URL, params=params, verify=False)
 
     @classmethod
