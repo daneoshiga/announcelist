@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import ssl
 ssl.PROTOCOL_SSLv23 = ssl.PROTOCOL_TLSv1
 
@@ -21,6 +22,7 @@ class AnnounceList(object):
         requests_log.propagate = True
 
     def send_request(self, params):
+        key = os.environ.get('DREAMHOST_API_KEY', '6SHU5P2HLDAYECUM')
         params.update({
             'key': key,
             'format': 'json'
