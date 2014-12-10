@@ -22,17 +22,14 @@ class AnnounceList(object):
 
     def send_request(self, params):
         params.update({
-            'key': '6SHU5P2HLDAYECUM',
+            'key': key,
             'format': 'json'
         })
         return requests.get(BASE_URL, params=params, verify=False)
 
-    @classmethod
     def test(self):
         params = {
-            'key': '6SHU5P2HLDAYECUM',
             'cmd': 'user-list_users_no_pw',
-            'format': 'json'
         }
 
         return self.send_request(params)
@@ -92,4 +89,5 @@ class AnnounceList(object):
 
 if __name__ == "__main__":
     AnnounceList().enable_http_debug()
-    print AnnounceList().test().text
+    list = AnnounceList()
+    print list.test().text
