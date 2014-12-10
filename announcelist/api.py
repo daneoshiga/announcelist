@@ -43,48 +43,49 @@ class AnnounceList(object):
 
         return self.send_request(params)
 
-    def list_subscribers(self):
+    def list_subscribers(self, listname, domain):
         params = {
             'cmd': 'announcement_list-list_subscribers',
-            'listname': '',
-            'domain': '',
+            'listname': listname,
+            'domain': domain,
         }
 
         return self.send_request(params)
 
-    def add_subscriber(self):
+    def add_subscriber(self, listname, domain, email, name=''):
         params = {
             'cmd': 'announcement_list-add_subscriber',
-            'listname': '',
-            'domain': '',
-            'email': '',
-            'name': '',  # optional
+            'listname': listname,
+            'domain': domain,
+            'email': email,
+            'name': name,  # optional
         }
 
         return self.send_request(params)
 
-    def remove_subscriber(self):
+    def remove_subscriber(self, listname, domain, email):
         params = {
             'cmd': 'announcement_list-remove_subscriber',
-            'listname': '',
-            'domain': '',
-            'email': '',
+            'listname': listname,
+            'domain': domain,
+            'email': email,
         }
 
         return self.send_request(params)
 
-    def post_announcement(self):
+    def post_announcement(self, listname, domain, subject, message, name, **kwargs):
+
         params = {
             'cmd': 'announcement_list-post_announcement',
-            'listname': '',
-            'domain': '',
-            'subject': '',  # optional
-            'message': '',
-            'name': '',
-            'stamp': '',  # optional
-            'charset': '',  # optional
-            'type': '',  # optional
-            'duplicate_ok': '',
+            'listname': listname,
+            'domain': domain,
+            'subject': subject,  # optional
+            'message': message,
+            'name': name,
+            'stamp': kwargs.get('stamp'),  # optional the time to send the message, like 2009-05-28 19:40:00
+            'charset': kwargs.get('charset'),  # optional
+            'type': kwargs.get('type'),  # optional, the format of the message, either text or html (optional)
+            'duplicate_ok': kwargs.get('duplicate_ok'),  # optional
         }
 
         return self.send_request(params)
